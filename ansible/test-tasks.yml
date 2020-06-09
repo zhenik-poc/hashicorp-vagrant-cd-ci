@@ -1,13 +1,15 @@
 - debug: msg="Test starts with {{ mode }} mode"
-#- name: Minio healthchecks pass
-#    uri:
-#      url: http://localhost:8500/v1/health/connect/minio
-#      method: GET
-#      body_format: json
-#      return_content: true
-#    retries: 10
-#    delay: 10
-#    register: minio_check
-#    until: "minio_check.json.Requests.request_status == 'COMPLETED' or ambari_create_cluster_check.json.Requests.request_status == 'ABORTED'"
-#    failed_when: "minio_check.json.Requests.request_status == 'ABORTED'"
-#    when: "minio_check.json is defined"
+- name: Minio healthchecks pass
+  uri:
+#    curl -G -v localhost:8500/v1/health/checks/minio --data-urlencode 'filter=(Status=="passing")'
+    url: http://localhost:8500/v1/health/checks/minio?filter=%28Status%3D%3D%22passing%22%29
+    method: GET
+    return_content: yes
+    status_code: 200
+    body_format: json
+  register: result
+  retries: 10
+  delay: 15
+  until: result.json | length == 2
+- name: Response body
+  debug: msg="Here {{ (result.json) }} "
