@@ -3,5 +3,5 @@ up:
 down:
 	vagrant destroy
 test:
-	vagrant up --provisioning
+	 ANSIBLE_ARGS='--extra-vars "mode=test"' vagrant up --provision
 

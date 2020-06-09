@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - debug: msg="{{ mode }} mode"
+    - name: Run provisioning tasks
+      include_tasks: provisioning-tasks.yml
+    - name: Test healthchecks of services
+      include_tasks: test-tasks.yml
+      # variable mode setup via extra_args in Vagrant.ansible_local
+      when: mode == "test"
+

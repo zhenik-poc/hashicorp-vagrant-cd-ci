@@ -13,6 +13,12 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
   end
   config.vm.provision "ansible_local" do |ansible|
-      ansible.playbook = "./test/playbook.yml"
+      ansible.playbook = "./ansible/playbook.yml"
+      # default environment `dev`
+      ansible.extra_vars = {
+        mode: 'dev'
+      }
+      # use to override default mode to test for example
+      ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
   end
 end
