@@ -1,3 +1,4 @@
+.ONESHELL .PHONY: up down test
 up:
 	vagrant up
 down:
