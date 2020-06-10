@@ -1,4 +1,4 @@
-name: Verify Consul healthchecks on all services
+name: test-consul-healthchecks
 
 on:
   pull_request:
