@@ -1,0 +1,22 @@
+name: Verify Consul healthchecks on all services
+
+on:
+  pull_request:
+    branches: [ master ]
+  push:
+    branches: [ master ]
+jobs:
+  test:
+    # Macos includes virtualbox and vagrant.
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-18.04]
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs make test
+      - name: Run make test
+        run: make test
