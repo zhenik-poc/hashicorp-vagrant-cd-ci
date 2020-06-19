@@ -12,6 +12,10 @@ Vagrant.configure("2") do |config|
       vb.memory = 4096
       vb.cpus = 2
   end
+  config.vm.provision "ansible_local" do |startup|
+      run = "always"
+      startup.playbook = "/etc/ansible/startup.yml"
+  end
   config.vm.provision "ansible_local" do |ansible|
       ansible.playbook = "./ansible/playbook.yml"
       # default environment `dev`
