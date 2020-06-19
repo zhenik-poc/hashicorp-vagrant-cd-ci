@@ -1,4 +1,4 @@
-![](https://github.com/zhenik-poc/hashicorp-vagrant-cd-ci/workflows/test-consul-healthchecks/badge.svg)
+![](https://github.com/zhenik-poc/hashicorp-vagrant-cd-ci/workflows/CI/CD/badge.svg)
 # Hashicorp vagrant CD/CI
 Example of CD/CI for nomad jobs: 
 - Consul
