@@ -23,3 +23,5 @@ Example of CD/CI for nomad jobs:
 ```
 ANSIBLE_ARGS='--extra-vars "mode=test"' vagrant up provision 
 ```
+
+Some update
