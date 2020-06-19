@@ -4,7 +4,8 @@ up:
 down:
 	vagrant destroy
 test:
-	 ANSIBLE_ARGS='--extra-vars "mode=test"' vagrant up --provision
+	# ANSIBLE_ARGS='--extra-vars "mode=test"' vagrant up --provision
+	 echo "skip tests"
 build:
 	(cd packer; rm -rf output-hashistack; packer build -force .)
 add-box:
